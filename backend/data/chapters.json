@@ -1,0 +1,590 @@
+[
+  {
+    "chapter": "01",
+    "name": "Live animals",
+    "type": "goods",
+    "count": 72
+  },
+  {
+    "chapter": "02",
+    "name": "Meat and edible meat offal",
+    "type": "goods",
+    "count": 79
+  },
+  {
+    "chapter": "03",
+    "name": "Fish and crustaceans, molluscs and other aquatic invertebrates",
+    "type": "goods",
+    "count": 299
+  },
+  {
+    "chapter": "04",
+    "name": "Dairy produce; birds eggs; natural honey; edible products of animal origin",
+    "type": "goods",
+    "count": 68
+  },
+  {
+    "chapter": "05",
+    "name": "Products of animal origin, not elsewhere specified or included",
+    "type": "goods",
+    "count": 84
+  },
+  {
+    "chapter": "06",
+    "name": "Live trees and other plants; bulbs, roots and cut flowers",
+    "type": "goods",
+    "count": 27
+  },
+  {
+    "chapter": "07",
+    "name": "Edible vegetables and certain roots and tubers",
+    "type": "goods",
+    "count": 135
+  },
+  {
+    "chapter": "08",
+    "name": "Edible fruit and nuts; peel of citrus fruit or melons",
+    "type": "goods",
+    "count": 141
+  },
+  {
+    "chapter": "09",
+    "name": "Coffee, tea, mate and spices",
+    "type": "goods",
+    "count": 176
+  },
+  {
+    "chapter": "10",
+    "name": "Cereals",
+    "type": "goods",
+    "count": 76
+  },
+  {
+    "chapter": "11",
+    "name": "Products of the milling industry; malt; starches; inulin; wheat gluten",
+    "type": "goods",
+    "count": 71
+  },
+  {
+    "chapter": "12",
+    "name": "Oil seeds and oleaginous fruits; miscellaneous grains, seeds and fruit",
+    "type": "goods",
+    "count": 161
+  },
+  {
+    "chapter": "13",
+    "name": "Lac; gums, resins and other vegetable saps and extracts",
+    "type": "goods",
+    "count": 69
+  },
+  {
+    "chapter": "14",
+    "name": "Vegetable plaiting materials; vegetable products not elsewhere specified",
+    "type": "goods",
+    "count": 22
+  },
+  {
+    "chapter": "15",
+    "name": "Animal or vegetable fats and oils and their cleavage products",
+    "type": "goods",
+    "count": 166
+  },
+  {
+    "chapter": "16",
+    "name": "Preparations of meat, of fish or of crustaceans, molluscs",
+    "type": "goods",
+    "count": 61
+  },
+  {
+    "chapter": "17",
+    "name": "Sugars and sugar confectionery",
+    "type": "goods",
+    "count": 53
+  },
+  {
+    "chapter": "18",
+    "name": "Cocoa and cocoa preparations",
+    "type": "goods",
+    "count": 30
+  },
+  {
+    "chapter": "19",
+    "name": "Preparations of cereals, flour, starch or milk; pastrycooks products",
+    "type": "goods",
+    "count": 51
+  },
+  {
+    "chapter": "20",
+    "name": "Preparations of vegetables, fruit, nuts or other parts of plants",
+    "type": "goods",
+    "count": 99
+  },
+  {
+    "chapter": "21",
+    "name": "Miscellaneous edible preparations",
+    "type": "goods",
+    "count": 59
+  },
+  {
+    "chapter": "22",
+    "name": "Beverages, spirits and vinegar",
+    "type": "goods",
+    "count": 110
+  },
+  {
+    "chapter": "23",
+    "name": "Residues and waste from the food industries; prepared animal fodder",
+    "type": "goods",
+    "count": 92
+  },
+  {
+    "chapter": "24",
+    "name": "Tobacco and manufactured tobacco substitutes",
+    "type": "goods",
+    "count": 56
+  },
+  {
+    "chapter": "25",
+    "name": "Salt; sulphur; earths and stone; plastering materials, lime and cement",
+    "type": "goods",
+    "count": 265
+  },
+  {
+    "chapter": "26",
+    "name": "Ores, slag and ash",
+    "type": "goods",
+    "count": 125
+  },
+  {
+    "chapter": "27",
+    "name": "Mineral fuels, mineral oils and products of their distillation",
+    "type": "goods",
+    "count": 91
+  },
+  {
+    "chapter": "28",
+    "name": "Inorganic chemicals; organic or inorganic compounds of precious metals",
+    "type": "goods",
+    "count": 497
+  },
+  {
+    "chapter": "29",
+    "name": "Organic chemicals",
+    "type": "goods",
+    "count": 1164
+  },
+  {
+    "chapter": "30",
+    "name": "Pharmaceutical products",
+    "type": "goods",
+    "count": 247
+  },
+  {
+    "chapter": "31",
+    "name": "Fertilisers",
+    "type": "goods",
+    "count": 49
+  },
+  {
+    "chapter": "32",
+    "name": "Tanning or dyeing extracts; tannins and their derivatives; dyes, pigments",
+    "type": "goods",
+    "count": 373
+  },
+  {
+    "chapter": "33",
+    "name": "Essential oils and resinoids; perfumery, cosmetic or toilet preparations",
+    "type": "goods",
+    "count": 157
+  },
+  {
+    "chapter": "34",
+    "name": "Soap, organic surface-active agents, washing preparations, lubricating preparations",
+    "type": "goods",
+    "count": 71
+  },
+  {
+    "chapter": "35",
+    "name": "Albuminoidal substances; modified starches; glues; enzymes",
+    "type": "goods",
+    "count": 54
+  },
+  {
+    "chapter": "36",
+    "name": "Explosives; pyrotechnic products; matches; pyrophoric alloys",
+    "type": "goods",
+    "count": 35
+  },
+  {
+    "chapter": "37",
+    "name": "Photographic or cinematographic goods",
+    "type": "goods",
+    "count": 122
+  },
+  {
+    "chapter": "38",
+    "name": "Miscellaneous chemical products",
+    "type": "goods",
+    "count": 279
+  },
+  {
+    "chapter": "39",
+    "name": "Plastics and articles thereof",
+    "type": "goods",
+    "count": 531
+  },
+  {
+    "chapter": "40",
+    "name": "Rubber and articles thereof",
+    "type": "goods",
+    "count": 242
+  },
+  {
+    "chapter": "41",
+    "name": "Raw hides and skins (other than furskins) and leather",
+    "type": "goods",
+    "count": 93
+  },
+  {
+    "chapter": "42",
+    "name": "Articles of leather; saddlery and harness; travel goods, handbags",
+    "type": "goods",
+    "count": 85
+  },
+  {
+    "chapter": "43",
+    "name": "Furskins and artificial fur; manufactures thereof",
+    "type": "goods",
+    "count": 35
+  },
+  {
+    "chapter": "44",
+    "name": "Wood and articles of wood; wood charcoal",
+    "type": "goods",
+    "count": 346
+  },
+  {
+    "chapter": "45",
+    "name": "Cork and articles of cork",
+    "type": "goods",
+    "count": 18
+  },
+  {
+    "chapter": "46",
+    "name": "Manufactures of straw, of esparto or of other plaiting materials",
+    "type": "goods",
+    "count": 26
+  },
+  {
+    "chapter": "47",
+    "name": "Pulp of wood or of other fibrous cellulosic material; recovered paper",
+    "type": "goods",
+    "count": 39
+  },
+  {
+    "chapter": "48",
+    "name": "Paper and paperboard; articles of paper pulp, of paper or of paperboard",
+    "type": "goods",
+    "count": 320
+  },
+  {
+    "chapter": "49",
+    "name": "Printed books, newspapers, pictures and other products of the printing industry",
+    "type": "goods",
+    "count": 55
+  },
+  {
+    "chapter": "50",
+    "name": "Silk",
+    "type": "goods",
+    "count": 44
+  },
+  {
+    "chapter": "51",
+    "name": "Wool, fine or coarse animal hair; horsehair yarn and woven fabric",
+    "type": "goods",
+    "count": 152
+  },
+  {
+    "chapter": "52",
+    "name": "Cotton",
+    "type": "goods",
+    "count": 549
+  },
+  {
+    "chapter": "53",
+    "name": "Other vegetable textile fibres; paper yarn and woven fabrics of paper yarn",
+    "type": "goods",
+    "count": 102
+  },
+  {
+    "chapter": "54",
+    "name": "Man-made filaments; strip and the like of man-made textile materials",
+    "type": "goods",
+    "count": 306
+  },
+  {
+    "chapter": "55",
+    "name": "Man-made staple fibres",
+    "type": "goods",
+    "count": 308
+  },
+  {
+    "chapter": "56",
+    "name": "Wadding, felt and nonwovens; special yarns; twine, cordage, ropes and cables",
+    "type": "goods",
+    "count": 89
+  },
+  {
+    "chapter": "57",
+    "name": "Carpets and other textile floor coverings",
+    "type": "goods",
+    "count": 109
+  },
+  {
+    "chapter": "58",
+    "name": "Special woven fabrics; tufted textile fabrics; lace; tapestries; trimmings",
+    "type": "goods",
+    "count": 127
+  },
+  {
+    "chapter": "59",
+    "name": "Impregnated, coated, covered or laminated textile fabrics",
+    "type": "goods",
+    "count": 88
+  },
+  {
+    "chapter": "60",
+    "name": "Knitted or crocheted fabrics",
+    "type": "goods",
+    "count": 86
+  },
+  {
+    "chapter": "61",
+    "name": "Articles of apparel and clothing accessories, knitted or crocheted",
+    "type": "goods",
+    "count": 312
+  },
+  {
+    "chapter": "62",
+    "name": "Articles of apparel and clothing accessories, not knitted or crocheted",
+    "type": "goods",
+    "count": 326
+  },
+  {
+    "chapter": "63",
+    "name": "Other made up textile articles; sets; worn clothing and worn textile articles",
+    "type": "goods",
+    "count": 166
+  },
+  {
+    "chapter": "64",
+    "name": "Footwear, gaiters and the like; parts of such articles",
+    "type": "goods",
+    "count": 93
+  },
+  {
+    "chapter": "65",
+    "name": "Headgear and parts thereof",
+    "type": "goods",
+    "count": 23
+  },
+  {
+    "chapter": "66",
+    "name": "Umbrellas, sun umbrellas, walking-sticks, seat-sticks, whips, riding-crops",
+    "type": "goods",
+    "count": 16
+  },
+  {
+    "chapter": "67",
+    "name": "Prepared feathers and down and articles made of feathers or of down",
+    "type": "goods",
+    "count": 25
+  },
+  {
+    "chapter": "68",
+    "name": "Articles of stone, plaster, cement, asbestos, mica or similar materials",
+    "type": "goods",
+    "count": 156
+  },
+  {
+    "chapter": "69",
+    "name": "Ceramic products",
+    "type": "goods",
+    "count": 100
+  },
+  {
+    "chapter": "70",
+    "name": "Glass and glassware",
+    "type": "goods",
+    "count": 165
+  },
+  {
+    "chapter": "71",
+    "name": "Natural or cultured pearls, precious or semi-precious stones, precious metals",
+    "type": "goods",
+    "count": 139
+  },
+  {
+    "chapter": "72",
+    "name": "Iron and steel",
+    "type": "goods",
+    "count": 661
+  },
+  {
+    "chapter": "73",
+    "name": "Articles of iron or steel",
+    "type": "goods",
+    "count": 386
+  },
+  {
+    "chapter": "74",
+    "name": "Copper and articles thereof",
+    "type": "goods",
+    "count": 162
+  },
+  {
+    "chapter": "75",
+    "name": "Nickel and articles thereof",
+    "type": "goods",
+    "count": 48
+  },
+  {
+    "chapter": "76",
+    "name": "Aluminium and articles thereof",
+    "type": "goods",
+    "count": 137
+  },
+  {
+    "chapter": "78",
+    "name": "Lead and articles thereof",
+    "type": "goods",
+    "count": 33
+  },
+  {
+    "chapter": "79",
+    "name": "Zinc and articles thereof",
+    "type": "goods",
+    "count": 35
+  },
+  {
+    "chapter": "80",
+    "name": "Tin and articles thereof",
+    "type": "goods",
+    "count": 20
+  },
+  {
+    "chapter": "81",
+    "name": "Other base metals; cermets; articles thereof",
+    "type": "goods",
+    "count": 122
+  },
+  {
+    "chapter": "82",
+    "name": "Tools, implements, cutlery, spoons and forks, of base metal; parts thereof",
+    "type": "goods",
+    "count": 152
+  },
+  {
+    "chapter": "83",
+    "name": "Miscellaneous articles of base metal",
+    "type": "goods",
+    "count": 104
+  },
+  {
+    "chapter": "84",
+    "name": "Nuclear reactors, boilers, machinery and mechanical appliances; parts thereof",
+    "type": "goods",
+    "count": 1586
+  },
+  {
+    "chapter": "85",
+    "name": "Electrical machinery and equipment and parts thereof; sound recorders",
+    "type": "goods",
+    "count": 938
+  },
+  {
+    "chapter": "86",
+    "name": "Railway or tramway locomotives, rolling-stock and parts thereof",
+    "type": "goods",
+    "count": 59
+  },
+  {
+    "chapter": "87",
+    "name": "Vehicles other than railway or tramway rolling-stock, and parts and accessories",
+    "type": "goods",
+    "count": 274
+  },
+  {
+    "chapter": "88",
+    "name": "Aircraft, spacecraft, and parts thereof",
+    "type": "goods",
+    "count": 31
+  },
+  {
+    "chapter": "89",
+    "name": "Ships, boats and floating structures",
+    "type": "goods",
+    "count": 41
+  },
+  {
+    "chapter": "90",
+    "name": "Optical, photographic, cinematographic, measuring, checking, precision instruments",
+    "type": "goods",
+    "count": 404
+  },
+  {
+    "chapter": "91",
+    "name": "Clocks and watches and parts thereof",
+    "type": "goods",
+    "count": 120
+  },
+  {
+    "chapter": "92",
+    "name": "Musical instruments; parts and accessories of such articles",
+    "type": "goods",
+    "count": 43
+  },
+  {
+    "chapter": "93",
+    "name": "Arms and ammunition; parts and accessories thereof",
+    "type": "goods",
+    "count": 33
+  },
+  {
+    "chapter": "94",
+    "name": "Furniture; bedding, mattresses, cushions; lamps and lighting fittings",
+    "type": "goods",
+    "count": 120
+  },
+  {
+    "chapter": "95",
+    "name": "Toys, games and sports requisites; parts and accessories thereof",
+    "type": "goods",
+    "count": 89
+  },
+  {
+    "chapter": "96",
+    "name": "Miscellaneous manufactured articles",
+    "type": "goods",
+    "count": 140
+  },
+  {
+    "chapter": "97",
+    "name": "Works of art, collectors pieces and antiques",
+    "type": "goods",
+    "count": 17
+  },
+  {
+    "chapter": "98",
+    "name": "Project imports; laboratory chemicals; passengers baggage; postal articles",
+    "type": "goods",
+    "count": 13
+  },
+  {
+    "chapter": "99",
+    "name": "Services Accounting Codes (SAC) - All Services",
+    "type": "service",
+    "count": 568
+  }
+]
