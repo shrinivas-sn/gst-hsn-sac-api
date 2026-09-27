@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gst-hsn-sac.osc.internal/sitemap.xml
+Sitemap: https://gst-hsn-sac-api.vercel.app/sitemap.xml
