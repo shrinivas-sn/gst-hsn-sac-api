@@ -40,8 +40,8 @@ function createApp(options = {}) {
 
   app.use(express.json());
 
-  // Root route: Health check & API Discovery per CONVENTIONS.md
-  app.get("/", (req, res) => {
+  // Root route & Health check: API Discovery per CONVENTIONS.md
+  const handleHealth = (req, res) => {
     const stats = gstService.getStats();
     res.status(200).json({
       success: true,
@@ -66,7 +66,10 @@ function createApp(options = {}) {
         timestamp: new Date().toISOString(),
       },
     });
-  });
+  };
+
+  app.get("/", handleHealth);
+  app.get("/health", handleHealth);
 
   // Mount API routers
   app.use("/v1/hsn", createHsnRouter(gstService));

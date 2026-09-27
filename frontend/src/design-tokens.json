@@ -1,0 +1,76 @@
+{
+  "archetype": "fintech-minimal",
+  "palette": {
+    "id": "paper-cobalt",
+    "name": "Paper Cobalt (Light Tax & Finance Registry)",
+    "mood": "clean, editorial, trustworthy light mode",
+    "tokens": {
+      "bg_canvas": "#f8fafc",
+      "bg_card": "#ffffff",
+      "primary": "#1d4ed8",
+      "text_main": "#0f172a",
+      "text_muted": "#64748b",
+      "border": "#e2e8f0"
+    },
+    "contrast_ratio": {
+      "text_to_card": 14.5
+    }
+  },
+  "typography": {
+    "id": "inter-jetbrains",
+    "name": "Inter + JetBrains Mono",
+    "heading_font": "Inter, sans-serif",
+    "body_font": "Inter, sans-serif",
+    "mono_font": "'JetBrains Mono', monospace",
+    "font_features": "cv02, tabular-nums"
+  },
+  "motion": {
+    "curve": {
+      "id": "snappy-utilitarian",
+      "spring": {
+        "stiffness": 400,
+        "damping": 30,
+        "mass": 0.7
+      },
+      "duration_ms": 120,
+      "best_for": "button-clicks, tab-switches"
+    },
+    "patterns": [
+      {
+        "id": "sliding-tab-pill",
+        "duration_ms": 160,
+        "curve_ref": "snappy-utilitarian"
+      },
+      {
+        "id": "copy-success-pop",
+        "duration_ms": 140,
+        "curve_ref": "fluid-tactile"
+      },
+      {
+        "id": "landing-scroll-reveal",
+        "duration_ms": 180,
+        "curve_ref": "smooth-editorial"
+      },
+      {
+        "id": "sticky-glass-nav",
+        "duration_ms": 120,
+        "curve_ref": "snappy-utilitarian"
+      }
+    ]
+  },
+  "css_variables": {
+    "--bg-canvas": "#f8fafc",
+    "--bg-card": "#ffffff",
+    "--primary": "#1d4ed8",
+    "--text-main": "#0f172a",
+    "--text-muted": "#64748b",
+    "--border": "#e2e8f0",
+    "--font-heading": "Inter, sans-serif",
+    "--font-body": "Inter, sans-serif",
+    "--font-mono": "'JetBrains Mono', monospace",
+    "--motion-duration": "120ms",
+    "--spring-stiffness": "400",
+    "--spring-damping": "30",
+    "--spring-mass": "0.7"
+  }
+}

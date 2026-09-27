@@ -1,14 +1,19 @@
 import React from 'react';
 
-export function Footer() {
+export default function Footer() {
   return (
-    <footer>
-      <p>
-        Data sourced from official statutory gazette notifications published by the Central Board of Indirect Taxes and Customs (CBIC), Government of India.
-      </p>
-      <p style={{ marginTop: '6px' }}>
-        Public Domain per Section 52(1)(q) of the Indian Copyright Act, 1957. Zero API key required.
-      </p>
+    <footer style={{ borderTop: '1px solid var(--border)', padding: '24px 20px', background: 'var(--bg-canvas)' }}>
+      <div style={{
+        maxWidth: 1120, margin: '0 auto', display: 'flex',
+        alignItems: 'center', justifyContent: 'space-between', fontSize: 12, color: 'var(--text-muted)',
+      }}>
+        <div>
+          Data Source: Official CBIC Gazettes • Free & Keyless REST API
+        </div>
+        <div className="mono">
+          Jev Tokens: paper-cobalt • snappy-utilitarian
+        </div>
+      </div>
     </footer>
   );
 }
