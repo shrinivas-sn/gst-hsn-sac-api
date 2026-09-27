@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { GUIDES } from '../content/guidesData';
 
 export default function GuidesPage() {
-  const [selectedGuide, setSelectedGuide] = useState(GUIDES[0]);
+  const { id } = useParams();
+  const matchedGuide = id ? GUIDES.find((g) => g.id === id) : null;
+  const [selectedGuideState, setSelectedGuideState] = useState(GUIDES[0]);
+  const selectedGuide = matchedGuide || selectedGuideState;
   const [filterQuery, setFilterQuery] = useState('');
 
   const filteredGuides = GUIDES.filter((g) =>
@@ -40,11 +44,14 @@ export default function GuidesPage() {
             {filteredGuides.map((guide) => {
               const isSelected = selectedGuide?.id === guide.id;
               return (
-                <div
+                <Link
                   key={guide.id}
-                  onClick={() => setSelectedGuide(guide)}
+                  to={`/guides/${guide.id}`}
+                  onClick={() => setSelectedGuideState(guide)}
                   className="card"
                   style={{
+                    display: 'block',
+                    textDecoration: 'none',
                     cursor: 'pointer',
                     padding: '14px 16px',
                     borderColor: isSelected ? 'var(--primary)' : 'var(--border)',
@@ -59,7 +66,7 @@ export default function GuidesPage() {
                   <h3 style={{ fontSize: 14, fontWeight: 600, color: isSelected ? 'var(--primary)' : 'var(--text-main)', lineHeight: 1.4 }}>
                     {guide.title}
                   </h3>
-                </div>
+                </Link>
               );
             })}
           </div>

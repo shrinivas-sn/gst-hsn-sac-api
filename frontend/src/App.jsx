@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PlaygroundPage from './pages/PlaygroundPage';
@@ -7,8 +8,7 @@ import DocsPage from './pages/DocsPage';
 import GuidesPage from './pages/GuidesPage';
 import StatusPage from './pages/StatusPage';
 
-export default function App() {
-  const [activeTab, setActiveTab] = useState('Playground');
+export function AppContent() {
   const [isOnline, setIsOnline] = useState(true);
 
   useEffect(() => {
@@ -24,15 +24,29 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <Navbar activeTab={activeTab} onSelectTab={setActiveTab} isOnline={isOnline} />
+      <Navbar isOnline={isOnline} />
       <main>
-        {activeTab === 'Playground' && <PlaygroundPage />}
-        {activeTab === 'Chapters' && <ChaptersPage />}
-        {activeTab === 'Documentation' && <DocsPage />}
-        {activeTab === 'Guides' && <GuidesPage />}
-        {activeTab === 'Health' && <StatusPage />}
+        <Routes>
+          <Route path="/" element={<PlaygroundPage />} />
+          <Route path="/playground" element={<Navigate to="/" replace />} />
+          <Route path="/chapters" element={<ChaptersPage />} />
+          <Route path="/docs" element={<DocsPage />} />
+          <Route path="/guides" element={<GuidesPage />} />
+          <Route path="/guides/:id" element={<GuidesPage />} />
+          <Route path="/status" element={<StatusPage />} />
+          <Route path="/health" element={<Navigate to="/status" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
