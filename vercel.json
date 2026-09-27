@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "backend/data/**",
+      "maxDuration": 15
+    }
+  },
+  "rewrites": [
+    { "source": "/v1/:path*", "destination": "/api/index.js" },
+    { "source": "/health", "destination": "/api/index.js" },
+    { "source": "/((?!assets|robots\\.txt|sitemap\\.xml|favicon\\.svg).*)", "destination": "/index.html" }
+  ]
+}

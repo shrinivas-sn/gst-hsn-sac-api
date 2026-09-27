@@ -1,0 +1,19 @@
+{
+  "name": "gst-hsn-sac-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free, keyless REST API serving India's complete GST classification system: ~16,800 HSN codes and ~568 SAC codes with applicable tax rates.",
+  "scripts": {
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "start": "node backend/src/index.js",
+    "test": "npm --prefix backend test"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "express-rate-limit": "^7.5.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

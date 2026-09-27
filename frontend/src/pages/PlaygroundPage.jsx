@@ -38,7 +38,8 @@ export default function PlaygroundPage() {
   }, [queryType, searchTerm]);
 
   const copyCurl = () => {
-    const curl = `curl -s "http://localhost:3000/v1/${queryType}/search?q=${searchTerm}"`;
+    const origin = typeof window !== 'undefined' && window.location.origin ? window.location.origin : 'http://localhost:3000';
+    const curl = `curl -s "${origin}/v1/${queryType}/search?q=${searchTerm}"`;
     navigator.clipboard.writeText(curl);
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
