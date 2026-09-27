@@ -12,6 +12,6 @@
   "rewrites": [
     { "source": "/v1/(.*)", "destination": "/api/index.js" },
     { "source": "/health", "destination": "/api/index.js" },
-    { "source": "/((?!assets|robots\\.txt|sitemap\\.xml|favicon\\.svg).*)", "destination": "/index.html" }
+    { "source": "/((?!assets|robots\\.txt|sitemap\\.xml|favicon\\.ico|favicon\\.svg|google.*\\.html).*)", "destination": "/index.html" }
   ]
 }
