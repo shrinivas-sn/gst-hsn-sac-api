@@ -1,16 +1,16 @@
 export const GUIDES = [
   {
     id: "free-hsn-code-lookup-api-nodejs",
-    title: "Free HSN Code Lookup in Node.js Without Paid GSP Gateways",
-    summary: "Query India's 16,825 HSN tariff codes and slab rates in Node.js and React using a keyless, zero-dependency public REST API.",
+    title: "Search HSN Classifications in Node.js",
+    summary: "Search the community-maintained HSN code dataset from Node.js using the free public REST API. Rates are not supplied.",
     readTime: "5 min read",
     category: "Integration Guide",
     date: "Sep 2026",
     keywords: ["free hsn code api", "gst hsn search nodejs", "hsn code lookup api india", "cbic hsn codes"],
     sections: [
       {
-        heading: "The Problem with Commercial GSP Gateways",
-        content: "Building invoicing software or e-commerce checkouts for Indian businesses requires classifying products against the Central Board of Indirect Taxes and Customs (CBIC) Harmonized System of Nomenclature (HSN). Most commercial GST Suvidha Providers (GSPs) put basic code search behind monthly subscriptions, credit card forms, and opaque API authentication tokens.\n\nThe GST classification table is public domain data under Section 52(1)(q) of the Indian Copyright Act 1957. A search service for this data does not need private tokens or monthly subscriptions."
+        heading: "What this API returns",
+        content: "Use text search to explore code descriptions and exact lookup to retrieve a record. Results come from a third-party classification dataset with no verified snapshot date. The API does not return tax rates or establish current legal validity; check the applicable official source for compliance work."
       },
       {
         heading: "HSN Code Numbering Structure",
@@ -18,53 +18,47 @@ export const GUIDES = [
       },
       {
         heading: "Quick Start cURL Example",
-        code: 'curl -s "http://localhost:3000/v1/hsn/search?q=coffee"'
+        code: 'curl -s "https://gst-hsn-sac-api.vercel.app/v1/hsn/search?q=coffee"'
       },
       {
         heading: "Node.js Integration Code",
         code: `async function searchHsn(query) {
-  const url = \`http://localhost:3000/v1/hsn/search?q=\${encodeURIComponent(query)}\`;
+  const url = \`https://gst-hsn-sac-api.vercel.app/v1/hsn/search?q=\${encodeURIComponent(query)}\`;
   const response = await fetch(url);
   const json = await response.json();
   if (!json.success) throw new Error(json.error.message);
-  return json.data; // returns array of { code, description, rate, chapter }
+  return json.data; // classification records; no tax rates
 }`
       }
     ]
   },
   {
     id: "hsn-code-digits-rules-einvoicing",
-    title: "4-Digit vs 6-Digit vs 8-Digit HSN Codes: GST Invoicing Rules and Validation",
-    summary: "Mandatory HSN code length rules under CBIC Notification 78/2020 for Indian B2B invoicing, e-invoicing, and exports, with automated validation logic.",
+    title: "Understanding HSN Code Lengths",
+    summary: "Understand chapter, heading, subheading, and tariff-item prefixes when browsing the HSN dataset.",
     readTime: "6 min read",
-    category: "Compliance & Rules",
+    category: "Classification Structure",
     date: "Sep 2026",
     keywords: ["hsn code digits rule gst e-invoicing", "b2b gst hsn validation api", "turnover 5 crore hsn mandatory digits"],
     sections: [
       {
-        heading: "Statutory Length Rules (CBIC Notification 78/2020)",
-        content: "Effective 1st April 2021, the mandatory number of digits depends strictly on the supplier's Aggregate Annual Turnover (AATO) in the preceding financial year:\n\n• Turnover up to ₹5 Crore: Minimum 4 digits for B2B supplies (optional for B2C).\n• Turnover above ₹5 Crore: Minimum 6 digits for all B2B and B2C supplies.\n• Export & Import: Full 8 digits strictly mandatory regardless of company turnover.\n• Chemical & Special notified goods: Mandatory 8 digits for 49 specific tariff lines."
+        heading: "Classification levels",
+        content: "The first two digits identify a chapter; four digits identify a heading; six identify a subheading; eight can identify a tariff item. This describes the structure of records in the dataset, not the number of digits required on a particular invoice."
       },
       {
-        heading: "Why 2-Digit Chapter Codes Fail on IRP Gateways",
-        content: "In the initial 2017 rollout of GST, some small taxpayers used 2-digit chapter numbers on invoices. Under current regulations, a 2-digit number (e.g., '09') is rejected for all B2B transactions. The minimum valid level is the 4-digit heading (e.g., '0901'). Furthermore, 4-digit or 6-digit codes must be valid prefixes of real 8-digit tariff lines in the official Customs Tariff Act schedule."
+        heading: "Lookup is not invoice validation",
+        content: "The API looks up records from a community-maintained snapshot. It does not check current invoice rules, turnover thresholds, effective dates, or whether a code is accepted by an invoicing portal."
       },
       {
-        heading: "Programmatic Validation Snippet",
-        code: `function checkHsnLength(code, annualTurnoverInCr, isExport = false) {
-  const clean = String(code).replace(/\\D/g, '');
-  if (isExport && clean.length !== 8) return { valid: false, reason: 'Export requires 8 digits' };
-  if (annualTurnoverInCr > 5 && clean.length < 6) return { valid: false, reason: 'Turnover > 5Cr requires 6 digits' };
-  if (clean.length < 4) return { valid: false, reason: 'Minimum 4 digits required for B2B' };
-  return { valid: true };
-}`
+        heading: "Browse a chapter",
+        code: 'curl "https://gst-hsn-sac-api.vercel.app/v1/hsn/chapters/09?limit=50&offset=0"'
       }
     ]
   },
   {
     id: "sac-vs-hsn-codes-invoicing-pipeline",
-    title: "SAC vs HSN Codes: Building a Dual Tax Classification Pipeline in Node.js",
-    summary: "How Services Accounting Codes (Chapter 99) differ from HSN tariff codes and how to handle dual goods and services classification in invoicing software.",
+    title: "SAC vs HSN Codes: Routing Classification Lookups",
+    summary: "How to route goods and services code lookups to the correct endpoint without inferring a tax rate.",
     readTime: "7 min read",
     category: "Architecture & ERP",
     date: "Sep 2026",
@@ -80,7 +74,7 @@ export const GUIDES = [
       },
       {
         heading: "Unified Dual Router Implementation",
-        code: `async function classifyTaxItem(query) {
+        code: `async function lookupClassification(query) {
   const isService = query.startsWith('99') && /^\\d{6}$/.test(query);
   const endpoint = isService
     ? \`/v1/sac/\${query}\`

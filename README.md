@@ -1,47 +1,52 @@
-# GST HSN/SAC Code & Tax Rate Lookup API
+# GST HSN/SAC Classification API
 
-A keyless REST API for India's complete GST (Goods and Services Tax) classification directory: ~16,825 HSN codes for goods and ~568 SAC codes for services with CGST, SGST, IGST tax rates, conditions, and chapter classifications.
+A keyless REST API for searching a community-maintained Indian HSN/SAC classification dataset: 16,825 goods codes, 568 service codes, and 98 chapter records. It supports exact code lookup, text search, and paginated HSN chapter browsing.
 
-The underlying data originates from statutory rate schedules and gazette notifications published by the Central Board of Indirect Taxes and Customs (CBIC), Ministry of Finance, Government of India.
+The data files were derived from the [QuantumByteStudios HSN/SAC dataset](https://github.com/QuantumByteStudios/gst-hsn-sac-codes), which describes its source as CBIC notifications. This project does not yet have a verified source snapshot date or an automated refresh process. Treat results as a classification reference, not proof that a code is currently valid.
 
-Current dataset: **16,825 HSN codes, 568 SAC codes, 98 active chapters**.
+Dataset size: **16,825 HSN records, 568 SAC records, 98 chapter records**.
 
-No signup, no API key, CORS open to all origins. Every response carries a standard JSON envelope with metadata.
+No signup or API key is required, and CORS permits all origins. **This API does not provide GST rates or tax advice.** The imported source contains incomplete and ambiguous rates, so public responses intentionally omit all rate fields. Check current [CBIC GST rate schedules](https://cbic-gst.gov.in/) and applicable notifications before calculating tax.
+
+**Response change:** Earlier deployments exposed `igst_rate`, `cgst_rate`, and `sgst_rate`. These fields are removed from all public endpoints in this release because their values cannot be relied on. Clients using those fields must migrate before updating.
+
+The closest known free, keyless alternative, [HSN Code Finder](https://hsn.krakelabsindia.com/developers), already supports HSN/SAC search, rate results, batch lookup, snapshot metadata, and OpenAPI. This API's current distinction is deterministic catalogue browsing: it returns up to 500 records per HSN chapter page and includes the section, heading, and group text carried by the SAC dataset. These are useful for exploring classification structure, but they do not establish rate accuracy.
 
 ## Quick start
 
 ```bash
 # Health check & API discovery
-curl http://localhost:3000/
+curl https://gst-hsn-sac-api.vercel.app/health
 
 # Search goods by description
-curl "http://localhost:3000/v1/hsn/search?q=rice"
+curl "https://gst-hsn-sac-api.vercel.app/v1/hsn/search?q=rice"
 
 # Lookup exact HSN or SAC code
-curl http://localhost:3000/v1/hsn/0101
-curl http://localhost:3000/v1/hsn/995411
+curl https://gst-hsn-sac-api.vercel.app/v1/hsn/0101
+curl https://gst-hsn-sac-api.vercel.app/v1/sac/995411
 
 # List all tariff chapters
-curl http://localhost:3000/v1/hsn/chapters
+curl https://gst-hsn-sac-api.vercel.app/v1/hsn/chapters
 
 # List items within Chapter 10 (Cereals)
-curl "http://localhost:3000/v1/hsn/chapters/10?limit=20"
+curl "https://gst-hsn-sac-api.vercel.app/v1/hsn/chapters/10?limit=20"
 
 # Search services by description
-curl "http://localhost:3000/v1/sac/search?q=software"
+curl "https://gst-hsn-sac-api.vercel.app/v1/sac/search?q=software"
 ```
 
 ## Response format
 
-Every successful response uses the standard envelope:
+For example, `GET /v1/hsn/search?q=horses&limit=1` uses this envelope; exact lookups return a single object in `data` and `meta.code`/`meta.type`:
 
 ```json
 {
   "success": true,
-  "data": [ ... ],
+  "data": [{ "code": "0101", "description": "Live horses, asses, mules and hinnies.", "type": "goods", "section": null, "heading": "0101", "heading_description": null, "group": null, "group_description": null }],
   "meta": {
-    "count": 10,
-    "limit": 50,
+    "query": "horses",
+    "count": 1,
+    "limit": 1,
     "offset": 0
   }
 }
@@ -51,10 +56,10 @@ Every successful response uses the standard envelope:
 
 | Endpoint | Method | Query / Path Params | Description |
 |---|---|---|---|
-| `/` | GET | none | Health check, API overview, and dataset statistics |
+| `/health` | GET | none | Health check, API overview, and dataset statistics (`/` serves the web portal in production) |
 | `/v1/hsn/search` | GET | `q` (required), `limit` (opt), `offset` (opt) | Case-insensitive token search across HSN code descriptions |
-| `/v1/hsn/:code` | GET | `code` (required path param) | Exact lookup by 2/4/6/8-digit HSN or SAC code |
-| `/v1/hsn/chapters` | GET | none | List of all 98 chapters with item counts and headings |
+| `/v1/hsn/:code` | GET | `code` (required path param) | Exact goods HSN lookup; use `/v1/sac/:code` for services |
+| `/v1/hsn/chapters` | GET | none | List the 98 chapter records in this dataset |
 | `/v1/hsn/chapters/:chapter` | GET | `chapter` (path, 2 digits), `limit`, `offset` | List all commodities belonging to a specific chapter |
 | `/v1/sac/search` | GET | `q` (required), `limit` (opt), `offset` (opt) | Case-insensitive token search across Services Accounting Codes |
 | `/v1/sac/:code` | GET | `code` (required path param) | Exact lookup for a service accounting code |
@@ -79,8 +84,9 @@ Error responses return standard JSON envelopes with machine-readable codes:
 | `NOT_FOUND` | 404 | The requested code, chapter, or route does not exist |
 | `RATE_LIMITED` | 429 | Exceeded 100 requests per 15 minutes per IP |
 
-## Data source and license
+## Data source, limitations, and local setup
 
-- Primary source: Central Board of Indirect Taxes and Customs (CBIC), Ministry of Finance, Government of India (`cbic-gst.gov.in`, `services.gst.gov.in`).
-- Legal status: Statutory rate schedules and gazette notifications are public domain per Section 52(1)(q) of the Indian Copyright Act, 1957.
-- Community parsing: Parsed and standardized from gazette notifications by QuantumByteStudios open-source directory.
+- Dataset provenance: [QuantumByteStudios/gst-hsn-sac-codes](https://github.com/QuantumByteStudios/gst-hsn-sac-codes), licensed MIT by its publisher. It is a third-party parsing of government schedules; this API does not independently certify every record against a current official publication.
+- The source files contain rates, but all 568 SAC rates are null and 4,397 HSN IGST rates are null. Some non-null heading-level values also collapse conditional rates. The service strips all rate fields before indexing or responding.
+- No source snapshot date, effective-date history, or automated updates are published yet. A missing code is not proof of an invalid classification. Recheck primary sources for compliance work.
+- Run `npm --prefix backend install` and `npm --prefix backend test`, then `npm --prefix backend start` for a local server on port 3000. Run `npm --prefix frontend install` and `npm --prefix frontend run dev` for the portal.

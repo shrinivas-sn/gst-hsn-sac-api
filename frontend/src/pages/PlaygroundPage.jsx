@@ -54,7 +54,7 @@ export default function PlaygroundPage() {
             GST Classification Explorer
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>
-            Search over 16,800 HSN goods codes and 568 SAC service codes with live lookup.
+            Search the community HSN/SAC classification dataset. Tax rates are not supplied.
           </p>
         </div>
         <div style={{ display: 'flex', gap: 12 }}>
@@ -126,7 +126,7 @@ export default function PlaygroundPage() {
             <tr>
               <th style={{ width: 140 }}>Code</th>
               <th>Description</th>
-              <th style={{ width: 100, textAlign: 'right' }}>GST Slab</th>
+              <th style={{ width: 140 }}>Hierarchy</th>
             </tr>
           </thead>
           <tbody>
@@ -138,11 +138,7 @@ export default function PlaygroundPage() {
                 <td style={{ color: 'var(--text-main)' }}>
                   {r.description || r.details || '-'}
                 </td>
-                <td className="mono" style={{ textAlign: 'right', fontWeight: 600 }}>
-                  <span className="badge" style={{ fontSize: 10 }}>
-                    {r.rate || r.gst_rate || 'Standard'}
-                  </span>
-                </td>
+                <td className="mono">{r.group || r.heading || r.code.slice(0, 2)}</td>
               </tr>
             ))}
             {results.length === 0 && !loading && (

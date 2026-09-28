@@ -3,6 +3,11 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
+function toClassification(item) {
+  const { code, description, type, section, heading, heading_description, group, group_description } = item;
+  return { code, description, type, section, heading, heading_description, group, group_description };
+}
+
 class GstService {
   constructor(options = {}) {
     const dataDir = options.dataDir || path.resolve(__dirname, "..", "..", "data");
@@ -10,8 +15,8 @@ class GstService {
     const sacPath = path.join(dataDir, "sac_codes.json");
     const chaptersPath = path.join(dataDir, "chapters.json");
 
-    this.hsnList = fs.existsSync(hsnPath) ? JSON.parse(fs.readFileSync(hsnPath, "utf8")) : [];
-    this.sacList = fs.existsSync(sacPath) ? JSON.parse(fs.readFileSync(sacPath, "utf8")) : [];
+    this.hsnList = fs.existsSync(hsnPath) ? JSON.parse(fs.readFileSync(hsnPath, "utf8")).map(toClassification) : [];
+    this.sacList = fs.existsSync(sacPath) ? JSON.parse(fs.readFileSync(sacPath, "utf8")).map(toClassification) : [];
     this.chapters = fs.existsSync(chaptersPath) ? JSON.parse(fs.readFileSync(chaptersPath, "utf8")) : [];
 
     this.byCode = new Map();

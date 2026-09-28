@@ -8,7 +8,7 @@ export default function Footer() {
         alignItems: 'center', justifyContent: 'space-between', fontSize: 12, color: 'var(--text-muted)',
       }}>
         <div>
-          Data Source: Official CBIC Gazettes • Free & Keyless REST API
+          Dataset: QuantumByteStudios HSN/SAC codes • Classification only
         </div>
         <div className="mono">
           Jev Tokens: paper-cobalt • snappy-utilitarian

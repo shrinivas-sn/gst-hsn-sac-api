@@ -32,7 +32,7 @@ test("GET / returns 200 with health and API info", async () => {
   const json = await res.json();
 
   assert.equal(json.success, true);
-  assert.equal(json.data.name, "GST HSN/SAC Code & Tax Rate Lookup API");
+  assert.equal(json.data.name, "GST HSN/SAC Classification API");
   assert.equal(json.data.status, "healthy");
   assert.ok(Array.isArray(json.data.endpoints));
   assert.ok(json.data.endpoints.length >= 5);
@@ -76,6 +76,25 @@ test("GET /v1/hsn/:code returns exact match", async () => {
   assert.equal(json.data.code, "0101");
   assert.equal(json.data.type, "goods");
   assert.ok(json.data.description.toLowerCase().includes("horses"));
+  assert.equal(Object.keys(json.data).some((key) => /rate|tax|condition/i.test(key)), false);
+});
+
+test("classification responses do not expose unverified tax rates", async () => {
+  for (const path of ["/v1/hsn/search?q=horses", "/v1/hsn/chapters/01", "/v1/sac/search?q=construction", "/v1/sac/995411"]) {
+    const res = await fetch(`${baseUrl}${path}`);
+    assert.equal(res.status, 200, path);
+    const json = await res.json();
+    const records = Array.isArray(json.data) ? json.data : [json.data];
+    assert.ok(records.length > 0, path);
+    for (const record of records) {
+      assert.equal(Object.keys(record).some((key) => /rate|tax|condition/i.test(key)), false, path);
+    }
+  }
+});
+
+test("HSN endpoint cannot return a SAC record", async () => {
+  const res = await fetch(`${baseUrl}/v1/hsn/995411`);
+  assert.equal(res.status, 404);
 });
 
 test("GET /v1/hsn/:code returns 404 for unknown code", async () => {

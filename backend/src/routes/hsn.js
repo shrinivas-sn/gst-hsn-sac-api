@@ -81,12 +81,12 @@ function createHsnRouter(gstService) {
   router.get("/:code", (req, res) => {
     const code = req.params.code;
     const item = gstService.getByCode(code);
-    if (!item) {
+    if (!item || item.type !== "goods") {
       return res.status(404).json({
         success: false,
         error: {
           code: "NOT_FOUND",
-          message: `HSN/SAC code '${code}' not found in official CBIC rate directory.`,
+          message: `HSN code '${code}' not found in the goods classification dataset.`,
         },
       });
     }

@@ -8,7 +8,7 @@ export default function DocsPage() {
           API Reference
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>
-          REST endpoints, parameters, and contract schemas.
+          REST endpoints for classification search and browsing. Tax rates are not supplied.
         </p>
       </div>
 
