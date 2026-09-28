@@ -25,25 +25,25 @@ try {
       route: '/',
       file: path.join(distDir, 'index.html'),
       title: 'India GST HSN & SAC Code Lookup API — Free, Keyless Developer REST API',
-      description: 'Free, keyless REST API serving 16,825 official Indian GST HSN goods codes and 568 SAC service codes with live tax slab rates. No signup or API keys required.'
+      description: 'Free, keyless search across 16,825 HSN goods records and 568 SAC service records in a community-maintained classification dataset. Tax rates are not supplied.'
     },
     {
       route: '/chapters',
       file: path.join(distDir, 'chapters', 'index.html'),
       title: 'GST Tariff Chapters Directory — India GST HSN & SAC API',
-      description: 'Browse all 98 CBIC GST tariff chapters, goods categories, and live tax rates across India.'
+      description: 'Browse 98 HSN chapter records and paginated goods classifications from a community-maintained dataset.'
     },
     {
       route: '/docs',
       file: path.join(distDir, 'docs', 'index.html'),
       title: 'API Documentation & Endpoints — India GST HSN & SAC API',
-      description: 'Complete developer reference for keyless GST HSN and SAC search, chapter listing, and slab rate endpoints.'
+      description: 'Developer reference for HSN/SAC classification search, exact lookup, and chapter browsing.'
     },
     {
       route: '/guides',
       file: path.join(distDir, 'guides', 'index.html'),
-      title: 'Technical Guides & Tax Engineering — India GST HSN & SAC API',
-      description: 'Practical implementation tutorials for GST HSN/SAC classification, e-invoicing length rules, and ERP integration.'
+      title: 'Classification Guides — India GST HSN & SAC API',
+      description: 'Practical HSN/SAC dataset search, code structure, and goods-versus-services routing guides.'
     },
     {
       route: '/status',

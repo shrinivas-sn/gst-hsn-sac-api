@@ -7,7 +7,10 @@ author: "Open Source Companion Engineering"
 published_date: "2026-09-27"
 canonical_url: "https://gst-hsn-sac.osc.internal/guides/hsn-code-digits-rules-einvoicing"
 schema_type: "TechArticle"
+status: "archived-unverified-draft"
 ---
+
+> Archived draft: the invoicing and validation rules below have not been checked against current official notifications. Do not publish or use them for compliance decisions. See the current [README](../../README.md) and [public guide](../../frontend/src/content/guidesData.js).
 
 # 4-Digit vs 6-Digit vs 8-Digit HSN Codes: GST Invoicing Rules and Validation
 

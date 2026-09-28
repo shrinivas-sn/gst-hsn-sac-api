@@ -7,7 +7,10 @@ author: "Open Source Companion Engineering"
 published_date: "2026-09-27"
 canonical_url: "https://gst-hsn-sac.osc.internal/guides/sac-vs-hsn-codes-invoicing-pipeline"
 schema_type: "TechArticle"
+status: "archived-inaccurate-draft"
 ---
+
+> Archived draft: the tax calculations and rate examples below are outside the classification-only API contract. Do not publish or use them for implementation. See the current [README](../../README.md) and [public guide](../../frontend/src/content/guidesData.js).
 
 # SAC vs HSN Codes: Building a Dual Tax Classification Pipeline in Node.js
 

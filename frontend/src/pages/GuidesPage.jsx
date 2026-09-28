@@ -21,10 +21,10 @@ export default function GuidesPage() {
         <div>
           <div className="badge" style={{ marginBottom: 8, fontSize: 10 }}>Technical Guides & SEO Reference</div>
           <h1 style={{ fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 6 }}>
-            Developer Guides & Tax Engineering
+            Classification Guides
           </h1>
           <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>
-            Practical implementation tutorials for GST HSN/SAC classification, e-invoicing length rules, and ERP integration.
+            Dataset search, code structure, and goods-versus-services routing. Check official sources for tax and compliance decisions.
           </p>
         </div>
       </section>

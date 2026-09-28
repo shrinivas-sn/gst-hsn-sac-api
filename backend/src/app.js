@@ -46,11 +46,12 @@ function createApp(options = {}) {
     res.status(200).json({
       success: true,
       data: {
-        name: "GST HSN/SAC Code & Tax Rate Lookup API",
+        name: "GST HSN/SAC Classification API",
         version: "1.0.0",
         description:
-          "Free, keyless REST API serving India's complete GST (Goods and Services Tax) classification system: ~16,800 HSN codes and ~568 SAC codes with applicable tax rates.",
-        license: "Public Domain per Section 52(1)(q) of Indian Copyright Act 1957",
+          "Free, keyless HSN and SAC classification search and chapter browsing from a community-maintained dataset. Tax rates are not supplied.",
+        data_source: "https://github.com/QuantumByteStudios/gst-hsn-sac-codes",
+        rate_data: "not_provided",
         endpoints: [
           "GET /v1/hsn/search?q=:query",
           "GET /v1/hsn/:code",

@@ -36,7 +36,7 @@ export default function ChaptersPage() {
           Tariff Chapters (1–98)
         </h1>
         <p style={{ color: 'var(--text-muted)', fontSize: 13 }}>
-          Official customs and excise tariff chapter structure.
+          Browse the chapter records in this community-maintained dataset.
         </p>
       </div>
 

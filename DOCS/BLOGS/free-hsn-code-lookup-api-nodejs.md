@@ -7,7 +7,10 @@ author: "Open Source Companion Engineering"
 published_date: "2026-09-27"
 canonical_url: "https://gst-hsn-sac.osc.internal/guides/free-hsn-code-lookup-api-nodejs"
 schema_type: "TechArticle"
+status: "archived-inaccurate-draft"
 ---
+
+> Archived draft: this article describes tax-rate fields and examples the API does not provide. Do not publish or use it for implementation. See the current [README](../../README.md) and [public guide](../../frontend/src/content/guidesData.js).
 
 # Free HSN Code Lookup in Node.js Without Paid GSP Gateways
 
