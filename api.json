@@ -1,0 +1,34 @@
+{
+  "manifest_version": 1,
+  "slug": "gst-hsn-sac",
+  "name": "GST HSN/SAC Classification API",
+  "one_liner": "Free, keyless REST API for exploring a community-maintained Indian HSN/SAC classification dataset without tax rates.",
+  "category": "Finance",
+  "repo": "https://github.com/shrinivas-sn/gst-hsn-sac-api",
+  "source": {
+    "name": "CBIC HSN/SAC classification, parsed by QuantumByteStudios/gst-hsn-sac-codes",
+    "url": "https://github.com/QuantumByteStudios/gst-hsn-sac-codes",
+    "license": "Gazetted statutory notifications, public domain under Indian Copyright Act 1957 s.52(1)(q)"
+  },
+  "not_provided": ["tax rates"],
+  "stack": null,
+  "deploy": {
+    "portal_url": "https://gst-hsn-sac-api.vercel.app",
+    "api_base_url": "https://gst-hsn-sac-api.vercel.app",
+    "health_path": "/health",
+    "warmup_path": "/health"
+  },
+  "routes": [
+    { "path": "/", "base": "portal", "kind": "page" },
+    { "path": "/docs", "base": "portal", "kind": "page" },
+    { "path": "/v1/hsn/0101", "base": "api", "kind": "api" },
+    { "path": "/v1/hsn/search?q=rice", "base": "api", "kind": "api" },
+    { "path": "/v1/hsn/chapters", "base": "api", "kind": "api" },
+    { "path": "/v1/sac/995411", "base": "api", "kind": "api" },
+    { "path": "/health", "base": "api", "kind": "api" }
+  ],
+  "submission": {
+    "terms": ["HSN", "SAC", "GST classification", "tariff chapter"],
+    "targets": [{ "repo": "public-apis/public-apis", "pr": 7590 }]
+  }
+}
