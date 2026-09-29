@@ -12,18 +12,21 @@
     <linearGradient id="gstGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fde047" />
       <stop offset="50%" stop-color="#f59e0b" />
-      <stop offset="100%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
     </linearGradient>
   </defs>
 
-  <!-- Goods (HSN) Barcode Pillars on Left -->
-  <rect x="4" y="10" width="5" height="44" rx="2.5" fill="url(#gstCyan)" />
-  <rect x="13" y="14" width="7" height="36" rx="3.5" fill="url(#gstEmerald)" />
-  <rect x="24" y="10" width="4" height="44" rx="2" fill="#38bdf8" />
+  <!-- Isometric Top Lid (Emerald/Mint) -->
+  <path d="M32 4L58 18L32 32L6 18L32 4Z" fill="url(#gstEmerald)" stroke="#047857" stroke-width="1.5" stroke-linejoin="round" />
+  <path d="M20 11L46 25 M32 4L32 32" stroke="#6ee7b7" stroke-width="1" opacity="0.6" />
 
-  <!-- Services (SAC) Electric Lightning Ribbon on Right -->
-  <path d="M46 6L30 30H42L32 58L58 24H44L52 6H46Z" fill="url(#gstGold)" stroke="#b45309" stroke-width="1.5" stroke-linejoin="round" />
+  <!-- Left Facet: HSN Goods Barcode Matrix (Cyan & Dark Slate) -->
+  <path d="M6 18L32 32V60L6 46V18Z" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+  <rect x="11" y="27" width="3.5" height="22" rx="1.5" fill="url(#gstCyan)" transform="skewY(25)" />
+  <rect x="17" y="23" width="5" height="22" rx="2" fill="#ffffff" transform="skewY(25)" />
+  <rect x="25" y="19" width="3" height="22" rx="1.5" fill="url(#gstEmerald)" transform="skewY(25)" />
 
-  <!-- Corner Dot Accent -->
-  <circle cx="56" cy="8" r="3.5" fill="url(#gstEmerald)" />
+  <!-- Right Facet: SAC Services Electric Flash (Gold & Amber) -->
+  <path d="M32 32L58 18V46L32 60V32Z" fill="#1e293b" stroke="#334155" stroke-width="1.5" stroke-linejoin="round" />
+  <path d="M48 22L38 38H46L36 54L54 34H44L50 22H48Z" fill="url(#gstGold)" stroke="#d97706" stroke-width="1" stroke-linejoin="round" />
 </svg>
