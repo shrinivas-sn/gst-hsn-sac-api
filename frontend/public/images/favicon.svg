@@ -11,21 +11,19 @@
     </linearGradient>
     <linearGradient id="gstGold" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#f59e0b" />
       <stop offset="100%" stop-color="#d97706" />
     </linearGradient>
   </defs>
 
-  <!-- Base Badge Container -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#090d16" stroke="#1e293b" stroke-width="1.5" />
-
-  <!-- Goods (HSN) Barcode Grid on Left -->
-  <rect x="12" y="18" width="3" height="28" rx="1.5" fill="#64748b" />
-  <rect x="18" y="18" width="5" height="28" rx="2" fill="url(#gstCyan)" />
-  <rect x="26" y="18" width="2" height="28" rx="1" fill="#64748b" />
+  <!-- Goods (HSN) Barcode Pillars on Left -->
+  <rect x="4" y="10" width="5" height="44" rx="2.5" fill="url(#gstCyan)" />
+  <rect x="13" y="14" width="7" height="36" rx="3.5" fill="url(#gstEmerald)" />
+  <rect x="24" y="10" width="4" height="44" rx="2" fill="#38bdf8" />
 
   <!-- Services (SAC) Electric Lightning Ribbon on Right -->
-  <path d="M42 14L30 33H41L34 50L50 29H39L46 14H42Z" fill="url(#gstEmerald)" stroke="#090d16" stroke-width="1" />
+  <path d="M46 6L30 30H42L32 58L58 24H44L52 6H46Z" fill="url(#gstGold)" stroke="#b45309" stroke-width="1.5" stroke-linejoin="round" />
 
   <!-- Corner Dot Accent -->
-  <circle cx="50" cy="14" r="2.5" fill="url(#gstGold)" />
+  <circle cx="56" cy="8" r="3.5" fill="url(#gstEmerald)" />
 </svg>
