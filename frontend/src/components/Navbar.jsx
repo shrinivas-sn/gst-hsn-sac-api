@@ -17,9 +17,10 @@ export default function Navbar({ isOnline }) {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <NavLink to="/" style={{ textDecoration: 'none', color: 'inherit', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <img src="/images/favicon.svg" alt="GST HSN API Logo" style={{ width: 22, height: 22, display: 'inline-block' }} />
             <span style={{ fontSize: 16, fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-main)' }}>
-              ⚡ gst-hsn-sac
+              gst-hsn-sac
             </span>
           </NavLink>
           <span className="badge" style={{ fontSize: 10 }}>
