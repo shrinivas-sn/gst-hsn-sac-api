@@ -171,6 +171,43 @@ test("GET /v1/sac/:code returns exact service match", async () => {
   assert.ok(json.data.description.toLowerCase().includes("construction"));
 });
 
+test("GET /v1/freshness reports the pinned upstream snapshot", async () => {
+  const res = await fetch(`${baseUrl}/v1/freshness`);
+  assert.equal(res.status, 200);
+  const json = await res.json();
+
+  assert.equal(json.success, true);
+  assert.match(json.data.source_date, /^\d{4}-\d{2}-\d{2}$/);
+  assert.match(json.data.source_commit, /^[a-f0-9]{40}$/);
+  assert.equal(json.data.source_repo, "QuantumByteStudios/gst-hsn-sac-codes");
+  assert.ok(Number.isInteger(json.data.age_days));
+  assert.equal(json.data.row_counts.hsn, 16825);
+  assert.equal(json.data.row_counts.sac, 568);
+});
+
+test("GET / advertises the snapshot date", async () => {
+  const json = await (await fetch(`${baseUrl}/`)).json();
+  assert.match(json.data.source_date, /^\d{4}-\d{2}-\d{2}$/);
+  assert.ok(json.data.endpoints.includes("GET /v1/freshness"));
+});
+
+test("data files match the checksums recorded in meta.json", () => {
+  const { checkSnapshot } = require("../scripts/check-snapshot");
+  assert.deepEqual(checkSnapshot().errors, []);
+});
+
+test("upstream check flags drift only when the newest data commit differs", async () => {
+  const { checkUpstream } = require("../scripts/check-snapshot");
+  const meta = { source_repo: "owner/repo", source_commit: "aaa" };
+  const reply = (sha) => async () => ({
+    ok: true,
+    json: async () => [{ sha, commit: { committer: { date: "2026-01-01T00:00:00Z" } } }],
+  });
+  assert.equal((await checkUpstream(meta, reply("aaa"))).drift, false);
+  assert.equal((await checkUpstream(meta, reply("bbb"))).drift, true);
+  await assert.rejects(checkUpstream(meta, async () => ({ ok: false, status: 403 })), /403/);
+});
+
 test("GET /v1/nonexistent returns 404", async () => {
   const res = await fetch(`${baseUrl}/v1/nonexistent`);
   assert.equal(res.status, 404);

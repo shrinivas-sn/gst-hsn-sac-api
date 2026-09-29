@@ -2,7 +2,7 @@
 
 A keyless REST API for searching a community-maintained Indian HSN/SAC classification dataset: 16,825 goods codes, 568 service codes, and 98 chapter records. It supports exact code lookup, text search, and paginated HSN chapter browsing.
 
-The data files were derived from the [QuantumByteStudios HSN/SAC dataset](https://github.com/QuantumByteStudios/gst-hsn-sac-codes), which describes its source as CBIC notifications. This project does not yet have a verified source snapshot date or an automated refresh process. Treat results as a classification reference, not proof that a code is currently valid.
+The data files were derived from the [QuantumByteStudios HSN/SAC dataset](https://github.com/QuantumByteStudios/gst-hsn-sac-codes), which describes its source as CBIC notifications. The data is pinned to upstream commit `c901c1b8bc4375080354eb17aba37b37c6a67c45` (6 June 2026), reported by `GET /v1/freshness`. Treat results as a classification reference, not proof that a code is currently valid.
 
 Dataset size: **16,825 HSN records, 568 SAC records, 98 chapter records**.
 
@@ -57,6 +57,7 @@ For example, `GET /v1/hsn/search?q=horses&limit=1` uses this envelope; exact loo
 | Endpoint | Method | Query / Path Params | Description |
 |---|---|---|---|
 | `/health` | GET | none | Health check, API overview, and dataset statistics (`/` serves the web portal in production) |
+| `/v1/freshness` | GET | none | Snapshot provenance: upstream repository, commit, snapshot date, age in days, row counts |
 | `/v1/hsn/search` | GET | `q` (required), `limit` (opt), `offset` (opt) | Case-insensitive token search across HSN code descriptions |
 | `/v1/hsn/:code` | GET | `code` (required path param) | Exact goods HSN lookup; use `/v1/sac/:code` for services |
 | `/v1/hsn/chapters` | GET | none | List the 98 chapter records in this dataset |
@@ -88,5 +89,7 @@ Error responses return standard JSON envelopes with machine-readable codes:
 
 - Dataset provenance: [QuantumByteStudios/gst-hsn-sac-codes](https://github.com/QuantumByteStudios/gst-hsn-sac-codes), licensed MIT by its publisher. It is a third-party parsing of government schedules; this API does not independently certify every record against a current official publication.
 - The source files contain rates, but all 568 SAC rates are null and 4,397 HSN IGST rates are null. Some non-null heading-level values also collapse conditional rates. The service strips all rate fields before indexing or responding.
-- No source snapshot date, effective-date history, or automated updates are published yet. A missing code is not proof of an invalid classification. Recheck primary sources for compliance work.
+- Snapshot: `backend/data/meta.json` records the upstream commit, its date (2026-06-06), and SHA-256 checksums for every data file; tests fail if a file drifts from it. `hsn_codes.json` and `sac_codes.json` are byte-identical to that upstream commit; `chapters.json` is derived by this project.
+- Refresh: the `upstream-check` workflow runs every Monday, compares the pinned commit with the newest upstream commit touching `data/`, and opens an `upstream-drift` issue when they differ. Data is then refreshed by hand and re-verified; nothing is overwritten automatically. Run `node backend/scripts/check-snapshot.js --upstream` to check locally (exit 0 in sync, 2 drift, 1 error).
+- No effective-date history is published, so a missing code is not proof of an invalid classification. Recheck primary sources for compliance work.
 - Run `npm --prefix backend install` and `npm --prefix backend test`, then `npm --prefix backend start` for a local server on port 3000. Run `npm --prefix frontend install` and `npm --prefix frontend run dev` for the portal.

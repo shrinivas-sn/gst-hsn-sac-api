@@ -19,6 +19,9 @@ class GstService {
     this.sacList = fs.existsSync(sacPath) ? JSON.parse(fs.readFileSync(sacPath, "utf8")).map(toClassification) : [];
     this.chapters = fs.existsSync(chaptersPath) ? JSON.parse(fs.readFileSync(chaptersPath, "utf8")) : [];
 
+    const metaPath = path.join(dataDir, "meta.json");
+    this.meta = fs.existsSync(metaPath) ? JSON.parse(fs.readFileSync(metaPath, "utf8")) : null;
+
     this.byCode = new Map();
     this.byChapter = new Map();
 
@@ -125,6 +128,24 @@ class GstService {
       }
     }
     return results.slice(offset, offset + limit);
+  }
+
+  // Snapshot provenance from data/meta.json; age_days is computed at request time.
+  getFreshness(now = new Date()) {
+    if (!this.meta) return null;
+    const ageDays = Math.floor((now.getTime() - Date.parse(`${this.meta.source_date}T00:00:00Z`)) / 86_400_000);
+    return {
+      source_date: this.meta.source_date,
+      age_days: ageDays,
+      source_repo: this.meta.source_repo,
+      source_url: this.meta.source_url,
+      source_commit: this.meta.source_commit,
+      source_license: this.meta.source_license,
+      verified_at: this.meta.verified_at,
+      row_counts: this.meta.row_counts,
+      update_policy:
+        "A weekly workflow compares this snapshot with the upstream repository and opens an issue when a newer data commit exists; data is then refreshed by hand.",
+    };
   }
 
   getStats() {

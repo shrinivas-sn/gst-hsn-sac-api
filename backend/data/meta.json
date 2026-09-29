@@ -1,0 +1,29 @@
+{
+  "source_repo": "QuantumByteStudios/gst-hsn-sac-codes",
+  "source_url": "https://github.com/QuantumByteStudios/gst-hsn-sac-codes",
+  "source_commit": "c901c1b8bc4375080354eb17aba37b37c6a67c45",
+  "source_date": "2026-06-06",
+  "source_license": "MIT",
+  "verified_at": "2026-09-29",
+  "row_counts": {
+    "hsn": 16825,
+    "sac": 568,
+    "chapters": 98
+  },
+  "files": {
+    "hsn_codes.json": {
+      "sha256": "4fcd477282e53c945a1d3cb43b1f7b2e96469705930d85385651fe3b7680434f",
+      "bytes": 5264224,
+      "upstream_git_blob": "aa98c8fe5598d5080d7a043a0cf15d1af9b2780a"
+    },
+    "sac_codes.json": {
+      "sha256": "e2616b692d589a1f78d708b75cfb8231840ec774389d14cf87283a65c4625857",
+      "bytes": 276512,
+      "upstream_git_blob": "40bc49935da02406d531ceddef965efd771f53eb"
+    },
+    "chapters.json": {
+      "sha256": "416503e6eccda62629ca0f1265baa62deca17ac7d92d79b3ede2760810d3bd7f",
+      "bytes": 13026
+    }
+  }
+}

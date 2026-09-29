@@ -52,7 +52,9 @@ function createApp(options = {}) {
           "Free, keyless HSN and SAC classification search and chapter browsing from a community-maintained dataset. Tax rates are not supplied.",
         data_source: "https://github.com/QuantumByteStudios/gst-hsn-sac-codes",
         rate_data: "not_provided",
+        source_date: gstService.meta ? gstService.meta.source_date : null,
         endpoints: [
+          "GET /v1/freshness",
           "GET /v1/hsn/search?q=:query",
           "GET /v1/hsn/:code",
           "GET /v1/hsn/chapters",
@@ -71,6 +73,18 @@ function createApp(options = {}) {
 
   app.get("/", handleHealth);
   app.get("/health", handleHealth);
+
+  // Snapshot provenance: which upstream commit and date the data comes from.
+  app.get("/v1/freshness", (req, res) => {
+    const data = gstService.getFreshness();
+    if (!data) {
+      return res.status(503).json({
+        success: false,
+        error: { code: "SNAPSHOT_UNAVAILABLE", message: "Dataset snapshot metadata is not available." },
+      });
+    }
+    res.set("Cache-Control", "no-store").status(200).json({ success: true, data, meta: { timestamp: new Date().toISOString() } });
+  });
 
   // Mount API routers
   app.use("/v1/hsn", createHsnRouter(gstService));

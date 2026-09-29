@@ -1,0 +1,46 @@
+# Weekly check that the pinned HSN/SAC snapshot still matches the upstream dataset.
+# It never rewrites data: on drift it opens one issue so the refresh is reviewed by hand.
+name: upstream-check
+
+on:
+  schedule:
+    - cron: '0 4 * * 1' # Mondays 04:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Exit 0 = in sync, 2 = upstream published a newer data commit, 1 = broken snapshot or API error.
+      - name: Compare snapshot with upstream
+        id: check
+        run: |
+          set +e
+          node backend/scripts/check-snapshot.js --upstream | tee check.json
+          code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          [ "$code" = "0" ] || [ "$code" = "2" ]
+
+      - name: Open a drift issue
+        if: steps.check.outputs.code == '2'
+        run: |
+          if [ -n "$(gh issue list --label upstream-drift --state open --json number --jq '.[0].number')" ]; then
+            echo "A drift issue is already open."; exit 0
+          fi
+          gh label create upstream-drift --description "Upstream dataset has a newer data commit" --force
+          latest=$(jq -r '.upstream.latest' check.json)
+          gh issue create --label upstream-drift \
+            --title "Upstream HSN/SAC dataset moved to ${latest:0:10}" \
+            --body "The pinned snapshot ($(jq -r '.source_commit' check.json | cut -c1-10), $(jq -r '.source_date' check.json)) is behind upstream ($latest, $(jq -r '.upstream.latest_date' check.json)). Refresh backend/data, rebuild chapters.json, update backend/data/meta.json, then run npm test."

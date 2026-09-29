@@ -10,7 +10,7 @@ export const GUIDES = [
     sections: [
       {
         heading: "What this API returns",
-        content: "Use text search to explore code descriptions and exact lookup to retrieve a record. Results come from a third-party classification dataset with no verified snapshot date. The API does not return tax rates or establish current legal validity; check the applicable official source for compliance work."
+        content: "Use text search to explore code descriptions and exact lookup to retrieve a record. Results come from a third-party classification dataset pinned to an upstream snapshot dated 6 June 2026 (see /v1/freshness). The API does not return tax rates or establish current legal validity; check the applicable official source for compliance work."
       },
       {
         heading: "HSN Code Numbering Structure",
