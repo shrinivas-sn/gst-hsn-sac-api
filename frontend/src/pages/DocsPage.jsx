@@ -48,6 +48,14 @@ export default function DocsPage() {
         </div>
         <div style={{ borderTop: '1px solid var(--border)', paddingTop: 14 }}>
           <div className="mono" style={{ fontWeight: 600, color: 'var(--primary)' }}>
+            GET /v1/sac/:code
+          </div>
+          <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 4 }}>
+            Exact lookup for a 6-digit SAC service code, e.g. <span className="mono">/v1/sac/995411</span>.
+          </div>
+        </div>
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: 14 }}>
+          <div className="mono" style={{ fontWeight: 600, color: 'var(--primary)' }}>
             GET /v1/freshness
           </div>
           <div style={{ fontSize: 13, color: 'var(--text-muted)', marginTop: 4 }}>

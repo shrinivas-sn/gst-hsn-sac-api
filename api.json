@@ -21,14 +21,34 @@
   "routes": [
     { "path": "/", "base": "portal", "kind": "page" },
     { "path": "/docs", "base": "portal", "kind": "page" },
+    { "path": "/playground", "base": "portal", "kind": "page" },
+    { "path": "/status", "base": "portal", "kind": "page" },
+    { "path": "/guides", "base": "portal", "kind": "page" },
+    { "path": "/chapters", "base": "portal", "kind": "page" },
     { "path": "/v1/hsn/0101", "base": "api", "kind": "api" },
     { "path": "/v1/hsn/search?q=rice", "base": "api", "kind": "api" },
     { "path": "/v1/hsn/chapters", "base": "api", "kind": "api" },
     { "path": "/v1/sac/995411", "base": "api", "kind": "api" },
+    { "path": "/v1/sac/search?q=hotel", "base": "api", "kind": "api" },
+    { "path": "/v1/freshness", "base": "api", "kind": "api" },
     { "path": "/health", "base": "api", "kind": "api" }
   ],
   "submission": {
     "terms": ["HSN", "SAC", "GST classification", "tariff chapter"],
-    "targets": [{ "repo": "public-apis/public-apis", "pr": 7590 }]
+    "targets": [
+      {
+        "repo": "public-apis/public-apis",
+        "pr": 7590,
+        "row": {
+          "title": "India GST HSN & SAC",
+          "url": "https://gst-hsn-sac-api.vercel.app/docs",
+          "description": "Indian GST HSN and SAC classification code lookup and search",
+          "category": "Finance",
+          "auth": "No",
+          "https": "Yes",
+          "cors": "Yes"
+        }
+      }
+    ]
   }
 }
