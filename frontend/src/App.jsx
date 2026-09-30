@@ -7,6 +7,7 @@ import ChaptersPage from './pages/ChaptersPage';
 import DocsPage from './pages/DocsPage';
 import GuidesPage from './pages/GuidesPage';
 import StatusPage from './pages/StatusPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export function AppContent() {
   const [isOnline, setIsOnline] = useState(true);
@@ -35,7 +36,7 @@ export function AppContent() {
           <Route path="/guides/:id" element={<GuidesPage />} />
           <Route path="/status" element={<StatusPage />} />
           <Route path="/health" element={<Navigate to="/status" replace />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />
