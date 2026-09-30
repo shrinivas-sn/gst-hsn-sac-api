@@ -21,7 +21,6 @@
   "routes": [
     { "path": "/", "base": "portal", "kind": "page" },
     { "path": "/docs", "base": "portal", "kind": "page" },
-    { "path": "/playground", "base": "portal", "kind": "page" },
     { "path": "/status", "base": "portal", "kind": "page" },
     { "path": "/guides", "base": "portal", "kind": "page" },
     { "path": "/chapters", "base": "portal", "kind": "page" },
